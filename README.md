@@ -4,4 +4,6 @@ para escribir en italica, headers links etc en el readme consultar la [cheatshee
 
 ----
 
-prototipo en papel #falta#
+* prototipo en papel #falta#
+* persona #falta#
+
