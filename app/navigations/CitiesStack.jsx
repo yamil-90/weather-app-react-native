@@ -16,6 +16,10 @@ export default function CitiesStack() {
         name="Todas las ciudades"
         component={Cities}
       />
+      <Stack.Screen
+        name="Agregar Ciudad"
+        component={Cities}
+      />
     </Stack.Navigator>
   )
 }

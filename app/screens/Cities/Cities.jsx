@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import City from '../../components/Cities/City';
 
 export default function Cities() {
