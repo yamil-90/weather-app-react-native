@@ -32,7 +32,7 @@ export default function AddCity() {
                 await AsyncStorage.setItem('myCities', jsonValue)
             }
         } catch (error) {
-            console.log(error)
+            return setError(error)
         }
     }
     const citySchema = Yup.object().shape({

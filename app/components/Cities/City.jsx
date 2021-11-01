@@ -26,11 +26,11 @@ export default function City(params) {
                     {error ? <Text>Ciudad: {cityName}: Error al Cargar los datos</Text> :
                         <>
                             <Text>Ciudad: {data.name}</Text>
-                            <Text>Temperatura: {Math.round((data.main.temp - 273) * 10) / 10} </Text>
+                            <Text>Temperatura: {Math.round((data.main.temp - 273.15) * 10) / 10} </Text>
                             <Text>Humedad: {data.main.humidity} </Text>
-                            <Text>Sensacion termica:  {Math.round((data.main.feels_like - 273) * 10) / 10} </Text>
-                            <Text>Temperatura maxima: {Math.round((data.main.temp_max - 273) * 10) / 10} </Text>
-                            <Text>Temperatura minima: {Math.round((data.main.temp_min - 273) * 10) / 10} </Text>
+                            <Text>Sensacion termica:  {Math.round((data.main.feels_like - 273.15) * 10) / 10} </Text>
+                            <Text>Temperatura maxima: {Math.round((data.main.temp_max - 273.15) * 10) / 10} </Text>
+                            <Text>Temperatura minima: {Math.round((data.main.temp_min - 273.15) * 10) / 10} </Text>
 
                         </>
                     }

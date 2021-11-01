@@ -1,22 +1,45 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import City from '../../components/Cities/City';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { ScrollView } from 'react-native';
+import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 export default function Cities({ navigation }) {
-
-
-    let myCities = ['miami', 'sidney', 'newyork']
+    const [myCities, setMyCities] = useState('');
+    const [loading, setLoading] = useState(true)
+    const [error, setError]= useState(null)
+    useEffect(() => {
+        getData()
+        return () => {
+        }
+    }, [])
+    const getData = async()=>{
+        try {
+        
+            const value = await AsyncStorage.getItem('myCities');
+        
+            setMyCities(JSON.parse(value))
+            setLoading(false)
+    
+        } catch (error) {
+            console.log(error)
+            setError(error)
+        }
+        console.log(myCities)
+    }
+    
     const apiKey = "7225b503fd42cb9407fb83223b22e939";
     return (
         <View style={Styles.view}>
             <ScrollView style={Styles.scroll}>
-                {
-                    myCities.map((cityName, i) =>
-                        <City key={i} cityName={cityName} apiKey={apiKey} />
-                    )
-                }
+                
+                {loading?<Text>Cargando</Text>:
+                error || !myCities?<Text>Error al cargar los datos</Text>:
+                myCities.map((object, i)=>{
+                    return <City key={i} cityName={object.city} apiKey={apiKey} />
+                })}
+            
                 
             </ScrollView>
             <TouchableOpacity
