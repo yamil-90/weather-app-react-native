@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
 
 
@@ -20,17 +20,17 @@ export default function City(params) {
     }, [])
     return (
 
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={Styles.view}>
             {loading ? <Text>Cargando...</Text> :
                 <>
                     {error ? <Text>Ciudad: {cityName}: Error al Cargar los datos</Text> :
                         <>
                             <Text>Ciudad: {data.name}</Text>
-                            <Text>Temperatura: {Math.round((data.main.temp - 273) * 10) / 10} </Text>
+                            <Text>Temperatura: {Math.round((data.main.temp - 273.15) * 10) / 10} </Text>
                             <Text>Humedad: {data.main.humidity} </Text>
-                            <Text>Sensacion termica:  {Math.round((data.main.feels_like - 273) * 10) / 10} </Text>
-                            <Text>Temperatura maxima: {Math.round((data.main.temp_max - 273) * 10) / 10} </Text>
-                            <Text>Temperatura minima: {Math.round((data.main.temp_min - 273) * 10) / 10} </Text>
+                            <Text>Sensacion termica:  {Math.round((data.main.feels_like - 273.15) * 10) / 10} </Text>
+                            <Text>Temperatura maxima: {Math.round((data.main.temp_max - 273.15) * 10) / 10} </Text>
+                            <Text>Temperatura minima: {Math.round((data.main.temp_min - 273.15) * 10) / 10} </Text>
 
                         </>
                     }
@@ -39,3 +39,13 @@ export default function City(params) {
         </View>
     );
 }
+
+const Styles = StyleSheet.create({
+    view:{
+        justifyContent: 'center', 
+        alignItems: 'center',
+        borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    height:150
+    }
+})

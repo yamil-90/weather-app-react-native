@@ -3,6 +3,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Cities from '../screens/Cities/Cities';
+import AddCity from '../screens/Cities/AddCity'
 
 const Stack = createNativeStackNavigator()
 
@@ -13,12 +14,15 @@ export default function CitiesStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Todas las ciudades"
+        name="Cities"
         component={Cities}
+        options={{title: "Mis ciudades"}}
+        
       />
       <Stack.Screen
-        name="Agregar Ciudad"
-        component={Cities}
+        name="AddCity"
+        component={AddCity}
+        options={{title: "Agregar Ciudades"}}
       />
     </Stack.Navigator>
   )
