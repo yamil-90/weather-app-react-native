@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
 
 
@@ -20,7 +20,7 @@ export default function City(params) {
     }, [])
     return (
 
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={Styles.view}>
             {loading ? <Text>Cargando...</Text> :
                 <>
                     {error ? <Text>Ciudad: {cityName}: Error al Cargar los datos</Text> :
@@ -39,3 +39,13 @@ export default function City(params) {
         </View>
     );
 }
+
+const Styles = StyleSheet.create({
+    view:{
+        justifyContent: 'center', 
+        alignItems: 'center',
+        borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    height:150
+    }
+})
