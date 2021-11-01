@@ -9,6 +9,7 @@ export default function City(params) {
     const { cityName, apiKey } = params
     const [data, setdata] = useState([])
     useEffect(() => {
+        setLoading(true)
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
             .then((response) => {
                 if (response.status !== 200) seterror(true);
@@ -18,6 +19,8 @@ export default function City(params) {
             .catch((error) => console.error(error))
             .finally(() => setLoading(false));
     }, [])
+
+    
     return (
 
         <View style={Styles.view}>

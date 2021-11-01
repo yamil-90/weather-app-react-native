@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -6,9 +6,6 @@ import Cities from '../screens/Cities/Cities';
 import AddCity from '../screens/Cities/AddCity'
 
 const Stack = createNativeStackNavigator()
-
-
-
 
 export default function CitiesStack() {
   return (

@@ -9,11 +9,7 @@ export default function Cities({ navigation }) {
     const [myCities, setMyCities] = useState('');
     const [loading, setLoading] = useState(true)
     const [error, setError]= useState(null)
-    useEffect(() => {
-        getData()
-        return () => {
-        }
-    }, [])
+    
     const getData = async()=>{
         try {
         
@@ -26,8 +22,19 @@ export default function Cities({ navigation }) {
             console.log(error)
             setError(error)
         }
-        console.log(myCities)
     }
+    useEffect(() => {
+        // esto recarga la data cuando se activa el addListener "focus", asi se ven las nuevas ciudades despues de agregarlas
+        const reload = navigation.addListener('focus', () => {
+            console.log('refocus')
+                getData()
+        });
+      
+        return () => {
+          
+          reload;
+        };
+      }, [navigation]);
     
     const apiKey = "7225b503fd42cb9407fb83223b22e939";
     return (
