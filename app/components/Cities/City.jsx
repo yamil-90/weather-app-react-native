@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useEffect, useState } from 'react';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { Divider } from 'react-native-elements';
 
 export default function City(item, { navigation }) {
     const [loading, setLoading] = useState(true)
@@ -26,8 +26,8 @@ export default function City(item, { navigation }) {
 
     const swipeDelete = (progress, dragX) => {
         const trans = dragX.interpolate({
-            inputRange: [0, 50, 100, 101],
-            outputRange: [-20, 0, 0, 1],
+            inputRange: [0, 10, 20, 100],
+            outputRange: [-10, 10, 0, 1],
         });
 
         return (
@@ -51,8 +51,8 @@ export default function City(item, { navigation }) {
     return (
 
         <>
-            {loading ? <Text>Cargando...</Text> :
-                <>
+            {loading ? <TouchableOpacity style={Styles.item}><Text>Cargando...</Text></TouchableOpacity> :
+                <View style={Styles.view}>
 
 
 
@@ -61,35 +61,54 @@ export default function City(item, { navigation }) {
                             activeOpacity={0.8}
                             style={Styles.item}
                             onPress={() => console.log('go to details')}>
-                            <View style={Styles.view}>
-                                {error ? <Text>Ciudad: {city}: Error al Cargar los datos</Text> :
+                            
+                                {error ? <Text style={Styles.item_text}>Ciudad: {city}: Error al Cargar los datos</Text> :
                                     <>
-                                        <Text>Ciudad: {data.name}</Text>
-                                        <Text>Temperatura: {Math.round((data.main.temp - 273.15) * 10) / 10} </Text>
-                                        <Text>Humedad: {data.main.humidity} </Text>
-                                        <Text>Sensacion termica:  {Math.round((data.main.feels_like - 273.15) * 10) / 10} </Text>
-                                        <Text>Temperatura maxima: {Math.round((data.main.temp_max - 273.15) * 10) / 10} </Text>
-                                        <Text>Temperatura minima: {Math.round((data.main.temp_min - 273.15) * 10) / 10} </Text>
+                                        <Text style={Styles.item_text}>{data.name}</Text>
+                                        <Text style={Styles.item_text}>Tº: {Math.round((data.main.temp - 273.15) * 10) / 10}ºc </Text>
+                                        <Text style={Styles.item_text}>H: {data.main.humidity}% </Text>
+                                        <Text style={Styles.item_text}>Sensacion: {Math.round((data.main.feels_like - 273.15) * 10) / 10}ºc </Text>
+                                        <Text style={Styles.item_text}>Max/Min: {Math.round((data.main.temp_max - 273.15) * 10) / 10}/{Math.round((data.main.temp_min - 273.15) * 10) / 10}ºc </Text>
+                                        
                                     </>
                                 }
-                            </View>
                         </TouchableOpacity>
                     </Swipeable>
+                    <Divider width={2} orientation="horizontal" />
 
-
-                </>
+                </View>
             }
         </>
     );
 }
 
 const Styles = StyleSheet.create({
-    view: {
+    view:{
+        backgroundColor:'red',
+        overflow: 'hidden',
+        
+    },
+    item:{
+        backgroundColor: '#F0F0F0',
+        width:'100%',
+        height: 120,
+        flex: 1,
+        alignItems:'center',
+        justifyContent:'center', 
+        padding: 15,
+    },
+    item_text:{
+        color:'#080808'
+    },
+    content_delete:{
+        backgroundColor:'red',
+        width:50,
+        height: '100%',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-        height: 150
+    },
+    content_delete_text:{
+        color: '#fff'
     }
 })

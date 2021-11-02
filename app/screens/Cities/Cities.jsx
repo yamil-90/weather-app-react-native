@@ -103,7 +103,8 @@ const Styles = StyleSheet.create({
     },
     view: {
         flex: 1,
-        position: 'relative'
+        position: 'relative',
+        marginTop:10
 
     }
 })
