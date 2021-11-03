@@ -40,14 +40,14 @@ export default function Cities({ navigation }) {
     // funcion para borrar las ciudades, filtra el listado de ciudades para sacar item.city y lo guarda en storage 
     const onDelete = async item => {
         try {
-          const current = myCities.filter(value => value.city !== item.city);
-          const json_value = JSON.stringify(current);
-          await AsyncStorage.setItem('myCities', json_value);
-          setMyCities(current);
+            const current = myCities.filter(value => value.city !== item.city);
+            const json_value = JSON.stringify(current);
+            await AsyncStorage.setItem('myCities', json_value);
+            setMyCities(current);
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      };
+    };
 
     const apiKey = "7225b503fd42cb9407fb83223b22e939";
 
@@ -56,7 +56,7 @@ export default function Cities({ navigation }) {
         <View style={Styles.view}>
 
             {loading ? <Text>Cargando</Text> :
-                error || !myCities ? <Text>Error al cargar los datos</Text> :
+                error || !myCities ? <Text>Error al cargar los datos {error}</Text> :
                     <>
                         <FlatList
                             data={myCities}
@@ -64,18 +64,17 @@ export default function Cities({ navigation }) {
                                 <City {...item} navigation={navigation} onDelete={onDelete} key={index} apiKey={apiKey} />
 
                             )}
-                            keyExtractor={item=>item.city}
+                            keyExtractor={item => item.city}
                         />
-
-                        <TouchableOpacity
-                            style={Styles.button}
-                            onPress={() => navigation.navigate('AddCity')}
-                        >
-                            <Icon color='#fff' name='add' size={45} />
-                        </TouchableOpacity>
                     </>
             }
-            </View>
+            <TouchableOpacity
+                style={Styles.button}
+                onPress={() => navigation.navigate('AddCity')}
+            >
+                <Icon color='#fff' name='add' size={45} />
+            </TouchableOpacity>
+        </View>
     )
 }
 

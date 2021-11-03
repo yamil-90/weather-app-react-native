@@ -66,7 +66,7 @@ export default function City(item) {
                             
                                 {error ? <Text style={Styles.item_text}>Ciudad: {city}: Error al Cargar los datos</Text> :
                                     <>
-                                        <RenderWeatherImage weather={data.weather[0].main}/>
+                                        <RenderWeatherImage size={50} weather={data.weather[0].main}/>
                                         <Text style={Styles.item_text}>{data.name}</Text>
                                         <Text style={Styles.item_text}>T: {Math.round((data.main.temp - 273.15) * 10) / 10}ºc </Text>
                                         
