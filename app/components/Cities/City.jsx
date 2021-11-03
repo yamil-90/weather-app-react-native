@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Divider } from 'react-native-elements';
+import RenderWeatherImage from "../../components/RenderWeatherImage";
 
-export default function City(item, { navigation }) {
+
+export default function City(item) {
     const [loading, setLoading] = useState(true)
     const [error, seterror] = useState(false)
-    const { city, apiKey, onDelete } = item
+    const { city, apiKey, onDelete, navigation } = item
     const [data, setdata] = useState([])
     // usamos fetch para conseguir la data de api weather
     // funcionaria mejor con axios? <--- pendiente
@@ -60,15 +62,13 @@ export default function City(item, { navigation }) {
                         <TouchableOpacity
                             activeOpacity={0.8}
                             style={Styles.item}
-                            onPress={() => console.log('go to details')}>
+                            onPress={() => navigation.navigate('DetailCity',{data})}>
                             
                                 {error ? <Text style={Styles.item_text}>Ciudad: {city}: Error al Cargar los datos</Text> :
                                     <>
+                                        <RenderWeatherImage weather={data.weather[0].main}/>
                                         <Text style={Styles.item_text}>{data.name}</Text>
-                                        <Text style={Styles.item_text}>Tº: {Math.round((data.main.temp - 273.15) * 10) / 10}ºc </Text>
-                                        <Text style={Styles.item_text}>H: {data.main.humidity}% </Text>
-                                        <Text style={Styles.item_text}>Sensacion: {Math.round((data.main.feels_like - 273.15) * 10) / 10}ºc </Text>
-                                        <Text style={Styles.item_text}>Max/Min: {Math.round((data.main.temp_max - 273.15) * 10) / 10}/{Math.round((data.main.temp_min - 273.15) * 10) / 10}ºc </Text>
+                                        <Text style={Styles.item_text}>T: {Math.round((data.main.temp - 273.15) * 10) / 10}ºc </Text>
                                         
                                     </>
                                 }
@@ -89,12 +89,12 @@ const Styles = StyleSheet.create({
         
     },
     item:{
-        backgroundColor: '#F0F0F0',
+        backgroundColor: 'lightblue',
         width:'100%',
         height: 120,
         flex: 1,
-        alignItems:'center',
-        justifyContent:'center', 
+        alignItems: 'center',
+        justifyContent: 'flex-start', 
         padding: 15,
     },
     item_text:{

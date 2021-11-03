@@ -24,7 +24,7 @@ export default function Navigation(){
                 ({ route }) => ({
                     tabBarIcon: ({ color }) => ScreenOptions(route, color),
                     tabBarInactiveTintColor: "#646464",
-                    tabBarActiveTintColor: "#00a680",
+                    tabBarActiveTintColor: "blue",
                     tabBarStyle: [
                         {
                           "display": "flex"
