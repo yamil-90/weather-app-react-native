@@ -1,9 +1,24 @@
-# H1 weather-app-react-native
+# Aplicación de clima Mobile, basada en React Native
+Lenguaje de programación y Toolkit: **React Native**  
+Fuentes de datos: **API Weather**  
+Persistencia de datos: **SQLite (Android) o Core Data (iOS)**  
+Versionamiento de código: **Git y GitHub**  
 
-para escribir en italica, headers links etc en el readme consultar la [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-----
+# Para correr este proyecto en tu PC necesitarás:
 
-* prototipo en papel #falta#
-* persona #falta#
+* Instalar Expo CLI
+  ```
+  $ npm install --global expo-cli
+  ```
+* Instalar la librería `Location`
+  ```
+  $ expo install expo-location
+  ```
+* Tener una API key de OpenWeatherMaps
+* Instalar la librería `react-native-env`
+  ```
+  npm install react-native-dotenv
+  ```
 
+**Faltan algunas librerías**
