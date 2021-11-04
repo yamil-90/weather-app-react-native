@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-export default function AddCity() {
+export default function AddCity({navigation}) {
     const [error, setError] = useState('') 
     
     // funciones de validacion con yup y de procesamiento de la info del formulario con asyncStorage (version de la comunidad)
@@ -25,11 +25,13 @@ export default function AddCity() {
                 const jsonValue = JSON.stringify(myCities);
                 await AsyncStorage.setItem('myCities', jsonValue)
                 // console.log(jsonValue)
+                navigation.navigate('Cities')
                 }
             } else {
                 myCities.push(values)
                 const jsonValue = JSON.stringify(myCities);
                 await AsyncStorage.setItem('myCities', jsonValue)
+                navigation.navigate('Cities')
             }
         } catch (error) {
             return setError(error)
