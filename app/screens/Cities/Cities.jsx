@@ -50,7 +50,7 @@ export default function Cities({ navigation }) {
     };
 
     const apiKey = "7225b503fd42cb9407fb83223b22e939";
-
+    const mapKey = "AIzaSyA-A7EI0w6HlycpbiuJTduX6Fynl_Sg6wc";
 
     return (
         <View style={Styles.view}>

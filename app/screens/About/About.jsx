@@ -1,6 +1,5 @@
 import React from "react";
-import { Text } from "react-native-elements";
-import { View } from "react-native";
+import { Text, View } from "react-native-elements";
 
 export default function About() {
     return (
