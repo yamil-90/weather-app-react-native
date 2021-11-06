@@ -11,7 +11,7 @@ export default function MapWithMarkers(props) {
     return (
         <>
             <MapView
-                style={Styles.map}
+                style={Styles.mainMap}
                 initialRegion={{
                     latitude: -34.78825,
                     longitude: -58.4324,
@@ -33,7 +33,7 @@ export default function MapWithMarkers(props) {
 
 const Styles = StyleSheet.create({
     //para que aparezca el mapa hay que agregar esta opcion al style
-    map: {
+    mainMap: {
         ...StyleSheet.absoluteFillObject,
     },
 })

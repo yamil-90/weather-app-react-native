@@ -104,7 +104,7 @@ export default function AddCity({ navigation }) {
     });
     return (
         <View style={Styles.view}>
-            {/* <ScrollView style={Styles.scroll}> */}
+            <ScrollView style={Styles.scroll}>
                 <Formik
                     validationSchema={citySchema}
                     initialValues={{ city: '' }}
@@ -144,26 +144,26 @@ export default function AddCity({ navigation }) {
                     {!loading ? <MapWithMarkers newMarker={newMarker} markers={markers} /> : <Text>loading....</Text>}
 
                 </View>
-            {/* </ScrollView> */}
+            </ScrollView>
         </View>
     )
 }
 
 const Styles = StyleSheet.create({
     view: {
-        flex: 1,
+        flex:1,
+       
         
     },
     map_view: {
         flex: 1,
-        margin:30
-    },
-    map: {
-        ...StyleSheet.absoluteFillObject,
+        height:350,
+        marginTop:10
+        
     },
     scroll: {
-
         paddingHorizontal: 20,
+        
     },
     form_group: {
         marginTop: 30,
