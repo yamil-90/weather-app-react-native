@@ -10,12 +10,14 @@ export default function Home() {
                 ubicacion actual
             </Text>
             <NearWeather/>
+            <Text>Explicacion de como operar la app</Text>
         </View>
     )
 }
 const Styles = StyleSheet.create({
     main_view:{
         flex:1,
-        backgroundColor: 'lightblue'
+        backgroundColor: 'lightblue',
+        alignItems:'center'
     }
 })

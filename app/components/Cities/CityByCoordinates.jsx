@@ -39,7 +39,7 @@ export default function CityByCoordinates(item) {
                             style={Styles.item}
                             >
                             
-                                {error ? <Text style={Styles.item_text}>Ciudad: {city}: Error al Cargar los datos</Text> :
+                                {error ? <Text style={Styles.item_text}>Error al Cargar los datos</Text> :
                                     <>
                                     <RenderWeatherImage size={50} weather={data.weather[0].main}/>
                                     <Text Styles={Styles.item_text}>{data.main.temp}ºc</Text>

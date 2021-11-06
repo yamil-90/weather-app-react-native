@@ -2,7 +2,9 @@ import React from 'react';
 import { Animated, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Navigation from './app/navigations/Navigation.jsx';
 import { useState, useEffect } from 'react';
-import NubeLogo from './assets/nube-logo.png'
+import NubeLogo from './assets/nube-logo.png';
+
+
 
 export default function App() {
 
