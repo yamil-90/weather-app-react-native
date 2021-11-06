@@ -6,6 +6,7 @@ import HomeStack from './HomeStack';
 import AboutStack from './AboutStack';
 import CitiesStack from './CitiesStack'
 import { Icon } from "react-native-elements/dist/icons/Icon";
+import TestGrounds from './TestGrounds';
 
 
 const Tab= createBottomTabNavigator(); 
@@ -55,6 +56,13 @@ export default function Navigation(){
                 headerShown: false
               }}
             />
+            <Tab.Screen 
+            name="Ventana de pruebas" 
+            component={TestGrounds}
+            options={{
+                headerShown: true
+              }}
+            />
             </Tab.Navigator>
         </NavigationContainer>
     )
@@ -71,8 +79,8 @@ function ScreenOptions(route, color) {
       case "Sobre Nosotros":
           iconName = "star-outline"
           break;
-      case "Search":
-          iconName = "magnify"
+      case "Ventana de pruebas":
+          iconName = "test-tube"
           break;
       case "Account":
           iconName = "account-outline"

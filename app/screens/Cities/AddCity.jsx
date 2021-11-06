@@ -1,41 +1,100 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import MapWithMarkers from '../../components/MapWithMarkers';
 
 
-export default function AddCity({navigation}) {
-    const [error, setError] = useState('') 
-    
-    // funciones de validacion con yup y de procesamiento de la info del formulario con asyncStorage (version de la comunidad)
-    const processSubmit = async (values) => {
 
+export default function AddCity({ navigation }) {
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [markers, setMarkers] = useState(null);
+    const [newMarker, setNewMarker] = useState(null);
+    useEffect(() => {
+        getData()
+        return () => {
+
+        }
+    }, [])
+    const getData = async () => {
+        try {
+            const value = await AsyncStorage.getItem('myCities');
+
+            setMarkers(JSON.parse(value))
+            setLoading(false)
+
+        } catch (error) {
+            console.log(error)
+            setError(error)
+        }
+    }
+    useEffect(() => {
+        // esto recarga la data cuando se activa el addListener "focus", asi se ven las nuevas ciudades despues de agregarlas
+        const reload = navigation.addListener('focus', () => {
+            console.log('refocus')
+            getData()
+        });
+
+        return () => {
+
+            reload;
+        };
+    }, [navigation]);
+    const saveData = async (values) => {
+        console.log(values)
         try {
             let myCities = []
             const value = await AsyncStorage.getItem('myCities');
             if (value) {
                 myCities = JSON.parse(value)
-                if(myCities.find(item=> item.city.trim().toUpperCase()===values.city.trim().toUpperCase())){
+                if (myCities.find(item => item.city.trim().toUpperCase() === values.name.trim().toUpperCase())) {
                     return setError("Esta ciudad ya existe")
-                }else {
-                myCities.push({...values, city: values.city.trim().toUpperCase()})
-                const jsonValue = JSON.stringify(myCities);
-                await AsyncStorage.setItem('myCities', jsonValue)
-                // console.log(jsonValue)
-                navigation.navigate('Cities')
+                } else {
+                    myCities.push({ city: values.name.trim().toUpperCase(), lon: values.coord.lon, lat: values.coord.lat })
+                    const jsonValue = JSON.stringify(myCities);
+                    await AsyncStorage.setItem('myCities', jsonValue);
+                    setNewMarker({ latitude: values.coord.lat, longitude: values.coord.lon, longitudeDelta: 0.015, latitudeDelta: 0.015 })
+                    markers.push(newMarker);
+                    getData();
+                    console.log(markers);
+                    //navigation.navigate('Cities')
                 }
             } else {
-                myCities.push(values)
+                myCities.push({ city: values.name.trim().toUpperCase(), lon: values.coord.lon, lat: values.coord.lat })
                 const jsonValue = JSON.stringify(myCities);
-                await AsyncStorage.setItem('myCities', jsonValue)
-                navigation.navigate('Cities')
+                // console.log(jsonValue)
+                await AsyncStorage.setItem('myCities', jsonValue);
+                setNewMarker({ latitude: values.coord.lon, longitude: values.coord.lat })
+                getData()
+                // navigation.navigate('Cities')
             }
         } catch (error) {
             return setError(error)
         }
+    }
+
+    // funciones de validacion con yup y de procesamiento de la info del formulario con asyncStorage (version de la comunidad)
+    const processSubmit = async (values) => {
+
+        
+        // setLoading(true)
+        const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${values.city}&appid=${process.env.WEATHER_API}`)
+            .then((response) => {
+                if (response.status !== 200) return setError('esta ciudad no existe');
+                else return response.json()
+                
+            })
+            .catch((error) => console.error(error))
+            .then((json) => {
+                console.log(json)
+                if(json){
+                    saveData(json)
+                }
+            });
     }
     const citySchema = Yup.object().shape({
         city: Yup.string()
@@ -67,7 +126,7 @@ export default function AddCity({navigation}) {
                                 ) : null}
                                 {error ? (
                                     <Text style={Styles.error}>{error}</Text>
-                                    ):null}
+                                ) : null}
                             </View>
                             <View style={Styles.form_button}>
                                 <TouchableOpacity
@@ -81,6 +140,10 @@ export default function AddCity({navigation}) {
                         </>
                     )}
                 </Formik>
+                <View style={Styles.map_view}>
+                    {!loading ? <MapWithMarkers newMarker={newMarker} markers={markers} /> : <Text>loading....</Text>}
+
+                </View>
             </ScrollView>
         </View>
     )
@@ -88,11 +151,19 @@ export default function AddCity({navigation}) {
 
 const Styles = StyleSheet.create({
     view: {
-        flex: 1
+        flex:1,
+       
+        
+    },
+    map_view: {
+        flex: 1,
+        height:350,
+        marginTop:10
+        
     },
     scroll: {
-
         paddingHorizontal: 20,
+        
     },
     form_group: {
         marginTop: 30,
@@ -125,8 +196,8 @@ const Styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
     },
-    error:{
-        fontSize:13,
+    error: {
+        fontSize: 13,
         color: '#C70039'
     }
 })

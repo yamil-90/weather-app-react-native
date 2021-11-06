@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import City from '../../components/Cities/City';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon, SearchBar } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -49,8 +49,8 @@ export default function Cities({ navigation }) {
         }
     };
 
-    const apiKey = "7225b503fd42cb9407fb83223b22e939";
-
+    const apiKey= process.env.WEATHER_API
+    
 
     return (
         <View style={Styles.view}>
@@ -58,6 +58,9 @@ export default function Cities({ navigation }) {
             {loading ? <Text>Cargando</Text> :
                 error || !myCities ? <Text>Error al cargar los datos {error}</Text> :
                     <>
+                    <SearchBar
+                    
+                    />
                         <FlatList
                             data={myCities}
                             renderItem={({ item, index }) => (
