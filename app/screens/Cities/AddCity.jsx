@@ -23,8 +23,8 @@ export default function AddCity({ navigation }) {
     const getData = async () => {
         try {
             const value = await AsyncStorage.getItem('myCities');
-
-            setMarkers(JSON.parse(value))
+            const data = JSON.parse(value);
+            setMarkers(data ? data : [])
             setLoading(false)
 
         } catch (error) {
