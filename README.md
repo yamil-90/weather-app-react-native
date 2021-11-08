@@ -19,7 +19,7 @@ Versionamiento de código: **Git y GitHub**
   $ yarn global add expo-cli
   ```
 
-* Una vez que tengas instalados las dependencias anteriores, deberás clonar el repo:
+* Una vez que tengas instaladas las dependencias anteriores, deberás clonar el repo:
   ```
   $ git clone git@github.com:yamil-90/weather-app-react-native.git
   ```
@@ -39,7 +39,7 @@ Versionamiento de código: **Git y GitHub**
   $ yarn install
   ```
 
-Adicionalmente deberas tener una API key de OpenWeatherMaps para guardar en la variable de entorno
-
-
-**Describir cómo se guarda la API key en la variable de entorno**
+Adicionalmente deberás tener una API key de OpenWeatherMaps para guardar en la variable de entorno. Para agregarla a tu proyecto, deberás crear un archivo `.env` en el directorio root del proyecto, y llenarlo con las siguientes variables:
+```
+WEATHER_API = "<tu API key de openweather>"
+```
