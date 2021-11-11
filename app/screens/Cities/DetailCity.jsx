@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, ImageBackground } from "react-native";
-
+import defaultBackground from "../../../assets/weatherBackground/sunny.jpg"
 import BackgroundWeather from "../../components/BackgroundWeather";
 
 
 export default function DetailCity({ route }) {
   const { data } = route.params;
-  const [backgroundImage, setbackgroundImage] = useState('')
+  const [backgroundImage, setbackgroundImage] = useState(defaultBackground)
 
   useEffect(()=>{
     //la funcion backgroundWeather nos da la imagen dependiendo del clima que le pasamos como parametro. la puse afuera para que quede mas limpio

@@ -148,11 +148,11 @@ const Styles = StyleSheet.create({
         position: 'relative',
     },
     searchBar:{
-        backgroundColor:"lightblue",
+        backgroundColor:"#fff",
         
     },
     inputContainer:{
-        backgroundColor:"lightblue",
+        backgroundColor:"#f6f6f6",
     },
     inputText:{
         color:"black"

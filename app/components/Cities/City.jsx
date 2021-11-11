@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useEffect, useState } from 'react';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Divider } from 'react-native-elements';
+import { Divider, Icon } from 'react-native-elements';
 import RenderWeatherImage from "../../components/RenderWeatherImage";
 
 
@@ -34,6 +34,7 @@ export default function City(item) {
 
         return (
             <TouchableOpacity
+            //TODO agregar un icono de tacho de basura
                 style={Styles.content_delete}
                 activeOpacity={0.8}
                 onPress={() => onDelete(item)}>
@@ -60,13 +61,17 @@ export default function City(item) {
 
                     <Swipeable renderLeftActions={swipeDelete}>
                         <TouchableOpacity
+                        //TODO agregar un icono de flechita en la izquierda que apunte a la derecha para que se note que se puede hacer swipe
+
                             activeOpacity={0.8}
                             style={Styles.item}
                             onPress={() => navigation.navigate('DetailCity',{data})}>
-                            
+                            {/* <Icon
+                            name={'search'}
+                            /> */}
                                 {error ? <Text style={Styles.item_text}>Ciudad: {city}: Error al Cargar los datos</Text> :
                                     <>
-                                        <RenderWeatherImage size={50} weather={data.weather[0].main}/>
+                                        <RenderWeatherImage size={50} weather={data.weather[0]}/>
                                         <Text style={Styles.item_text}>{data.name}</Text>
                                         <Text style={Styles.item_text}>T: {Math.round((data.main.temp - 273.15) * 10) / 10}ºc </Text>
                                         
@@ -89,7 +94,7 @@ const Styles = StyleSheet.create({
         
     },
     item:{
-        backgroundColor: 'lightblue',
+        backgroundColor: '#fff',
         width:'100%',
         height: 120,
         flex: 1,
