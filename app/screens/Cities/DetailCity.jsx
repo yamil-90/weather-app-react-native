@@ -7,7 +7,7 @@ import BackgroundWeather from "../../components/BackgroundWeather";
 export default function DetailCity({ route }) {
   const { data } = route.params;
   const [backgroundImage, setbackgroundImage] = useState(defaultBackground)
-
+  console.log(data)
   useEffect(()=>{
     //la funcion backgroundWeather nos da la imagen dependiendo del clima que le pasamos como parametro. la puse afuera para que quede mas limpio
     setbackgroundImage(BackgroundWeather(data.weather[0].main))
@@ -30,9 +30,13 @@ export default function DetailCity({ route }) {
               Sensacion: {Math.round(data.main.feels_like * 10) / 10}ºC
             </Text>
             <Text style={Styles.text}>
-              Max/Min: {Math.round(data.main.temp_max  * 10) / 10}/
-              {Math.round(data.main.temp_min  * 10) / 10}ºC
+              Max/Min: {Math.round(data.main.temp_max)}/
+              {Math.round(data.main.temp_min)}ºC
             </Text>
+            <Text style={Styles.text}>
+              Presión: {data.main.pressure}
+            </Text>
+            {/* TODO agregar mas data, presion, viento etc  */}
           </View>
 
         </View>
