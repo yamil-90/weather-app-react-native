@@ -8,15 +8,16 @@ import RenderWeatherImage from "../../components/RenderWeatherImage";
 
 
 export default function City(item) {
-    const [loading, setLoading] = useState(true)
-    const [error, seterror] = useState(false)
-    const { city, apiKey, onDelete, navigation } = item
-    const [data, setdata] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [error, seterror] = useState(false);
+    const { city, apiKey, onDelete, navigation } = item;
+    const [data, setdata] = useState([]);
+    const units = 'metric';
     // usamos fetch para conseguir la data de api weather
     // funcionaria mejor con axios? <--- pendiente
     useEffect(() => {
         setLoading(true)
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`)
             .then((response) => {
                 if (response.status !== 200) seterror(true);
                 return response.json();
@@ -73,7 +74,7 @@ export default function City(item) {
                                     <>
                                         <RenderWeatherImage size={50} weather={data.weather[0]}/>
                                         <Text style={Styles.item_text}>{data.name}</Text>
-                                        <Text style={Styles.item_text}>T: {Math.round((data.main.temp - 273.15) * 10) / 10}ºc </Text>
+                                        <Text style={Styles.item_text}>T: {data.main.temp}ºc </Text>
                                         
                                     </>
                                 }

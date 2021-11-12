@@ -43,6 +43,6 @@ export default function NearWeather({navigation}) {
 
 const styles = StyleSheet.create({
     container:{
-        
+      flex:0.5
     }
 })

@@ -7,7 +7,7 @@ import BackgroundWeather from "../../components/BackgroundWeather";
 export default function DetailCity({ route }) {
   const { data } = route.params;
   const [backgroundImage, setbackgroundImage] = useState(defaultBackground)
-
+  console.log(data)
   useEffect(()=>{
     //la funcion backgroundWeather nos da la imagen dependiendo del clima que le pasamos como parametro. la puse afuera para que quede mas limpio
     setbackgroundImage(BackgroundWeather(data.weather[0].main))
@@ -22,17 +22,21 @@ export default function DetailCity({ route }) {
             <Text style={Styles.text}>{data.name}</Text>
             <View>
               <Text style={Styles.text_main}>
-                {Math.round((data.main.temp - 273.15) * 10) / 10}ºC{" "}
+                {Math.round(data.main.temp * 10) / 10}ºC
               </Text>
             </View>
-            <Text style={Styles.text}>HR: {data.main.humidity}% </Text>
+            <Text style={Styles.text}>H: {data.main.humidity}% </Text>
             <Text style={Styles.text}>
-              Sensacion: {Math.round((data.main.feels_like - 273.15) * 10) / 10}ºC{" "}
+              Sensacion: {Math.round(data.main.feels_like * 10) / 10}ºC
             </Text>
             <Text style={Styles.text}>
-              Max/Min: {Math.round((data.main.temp_max - 273.15) * 10) / 10}/
-              {Math.round((data.main.temp_min - 273.15) * 10) / 10}ºC{" "}
+              Max/Min: {Math.round(data.main.temp_max)}/
+              {Math.round(data.main.temp_min)}ºC
             </Text>
+            <Text style={Styles.text}>
+              Presión: {data.main.pressure}
+            </Text>
+            {/* TODO agregar mas data, presion, viento etc  */}
           </View>
 
         </View>
@@ -48,6 +52,11 @@ const Styles = StyleSheet.create({
   },
   text_main: {
     fontSize: 80,
+    color: '#fff',
+    color: '#fff',
+    textShadowColor: '#000',
+    textShadowOffset:{width:-1, height: 1},
+    textShadowRadius: 15
   },
   image_view: {
     flex: 1,
@@ -63,7 +72,11 @@ const Styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#fff',
+    textShadowColor: '#000',
+    textShadowOffset:{width:-1, height: 1},
+    textShadowRadius: 15
   },
   image: {
     flex: 1,

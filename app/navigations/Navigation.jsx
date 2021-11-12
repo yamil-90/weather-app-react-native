@@ -19,7 +19,7 @@ export default function Navigation(){
         backgroundColor={'#b3ecff'}
       />
             <Tab.Navigator
-              initialRouteName="HomeStack"
+              initialRouteName="Home"
               screenOptions={
 
                 ({ route }) => ({
@@ -35,7 +35,7 @@ export default function Navigation(){
                 })}
             >
             <Tab.Screen 
-            name="HomeStack" 
+            name="Home" 
             component={HomeStack}
             options={{
                 headerShown: false
@@ -70,7 +70,7 @@ export default function Navigation(){
 function ScreenOptions(route, color) {
   let iconName;
   switch (route.name) {
-      case "HomeStack":
+      case "Home":
           iconName = "home-outline"
           break;
       case "Ciudades":

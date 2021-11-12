@@ -54,6 +54,7 @@ export default function Cities({ navigation }) {
             const json_value = JSON.stringify(current);
             await AsyncStorage.setItem('myCities', json_value);
             setMyCities(current);
+            setMyFilteredCities(current);
         } catch (error) {
             console.log(error);
         }

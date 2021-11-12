@@ -10,7 +10,8 @@ export default function HomeStack() {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
+        containerCustomStyle={{flexGrow:0}}
+          name="Principal"
           component={Home}
           options={{title: "Pagina principal"}}
         />
