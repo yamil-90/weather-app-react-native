@@ -41,7 +41,7 @@ export default function App() {
     <>
       <StatusBar
         animated={true}
-        backgroundColor={'#b3ecff'}
+        backgroundColor={'#87CEEB'}
       />
       <View style={styles.animationContainer}>
         <Animated.Image
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: '#b3ecff',
+    backgroundColor: '#87CEEB',
   },
   animationText: {
     color: "#fff",
