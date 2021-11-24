@@ -59,60 +59,117 @@ export default function Cities({ navigation }) {
             console.log(error);
         }
     };
+    //renderizo los diferentes mensajes en una funcion afuera para evitar lio en el return
+    const renderView = ()=>{
+      if(loading){
+        return <Text>Cargando</Text>
+      }
+      if(error){
+        return <Text>Error al cargar los datos {error}</Text>
+      }
+      if(!myCities){
+        return <Text style={Styles.text}>No hay Ciudades guardadas, agrega nuevas usando el boton azul abajo a la derecha!</Text>
+      }else{
+        return( 
+         <>
+          <SearchBar
+            placeholder="Ciudad"
+            render={function(){
+                console.log("hola");
+            }}
+            onChangeText={function (e) {
+              setSearch(e);
+              const value = AsyncStorage.getItem('myCities').then((value) => {
+              const allCities = JSON.parse(value);
+              var cities = allCities.filter((c) =>
+                c.city
+                  .trim()
+                  .toUpperCase()
+                  .includes(e.trim().toUpperCase())
+              );
+              if (e.trim() == "") {
+                cities = allCities;
+              }
+              setMyFilteredCities(cities);
+              console.log("cities: " + cities.map((c) => c.city));
+          })
+            }}
+            value={search}
+            containerStyle={Styles.searchBar}
+            inputContainerStyle={Styles.inputContainer}
+            inputStyle={Styles.inputText}
+          />
+          <FlatList
+            data={myFilteredCities}
+            renderItem={({ item, index }) => (
+              <City
+                {...item}
+                navigation={navigation}
+                onDelete={onDelete}
+                key={index}
+                apiKey={apiKey}
+              />
+            )}
+            keyExtractor={(item) => item.city}
+          />
+        </>)
+      }
+      // {loading ? (
+      //   <Text>Cargando</Text>
+      // ) : error || !myCities ? (
+      //   <Text>Error al cargar los datos {error}</Text>
+      // ) : (
+      //   <>
+      //     <SearchBar
+      //       placeholder="Ciudad"
+      //       render={function(){
+      //           console.log("hola");
+      //       }}
+      //       onChangeText={function (e) {
+      //         setSearch(e);
+      //         const value = AsyncStorage.getItem('myCities').then((value) => {
+      //         const allCities = JSON.parse(value);
+      //         var cities = allCities.filter((c) =>
+      //           c.city
+      //             .trim()
+      //             .toUpperCase()
+      //             .includes(e.trim().toUpperCase())
+      //         );
+      //         if (e.trim() == "") {
+      //           cities = allCities;
+      //         }
+      //         setMyFilteredCities(cities);
+      //         console.log("cities: " + cities.map((c) => c.city));
+      //     })
+      //       }}
+      //       value={search}
+      //       containerStyle={Styles.searchBar}
+      //       inputContainerStyle={Styles.inputContainer}
+      //       inputStyle={Styles.inputText}
+      //     />
+      //     <FlatList
+      //       data={myFilteredCities}
+      //       renderItem={({ item, index }) => (
+      //         <City
+      //           {...item}
+      //           navigation={navigation}
+      //           onDelete={onDelete}
+      //           key={index}
+      //           apiKey={apiKey}
+      //         />
+      //       )}
+      //       keyExtractor={(item) => item.city}
+      //     />
+      //   </>
+      // )}
+    }
 
     const apiKey= process.env.WEATHER_API
     
 
     return (
       <View style={Styles.view}>
-        {loading ? (
-          <Text>Cargando</Text>
-        ) : error || !myCities ? (
-          <Text>Error al cargar los datos {error}</Text>
-        ) : (
-          <>
-            <SearchBar
-              placeholder="Ciudad"
-              render={function(){
-                  console.log("hola");
-              }}
-              onChangeText={function (e) {
-                setSearch(e);
-                const value = AsyncStorage.getItem('myCities').then((value) => {
-                const allCities = JSON.parse(value);
-                var cities = allCities.filter((c) =>
-                  c.city
-                    .trim()
-                    .toUpperCase()
-                    .includes(e.trim().toUpperCase())
-                );
-                if (e.trim() == "") {
-                  cities = allCities;
-                }
-                setMyFilteredCities(cities);
-                console.log("cities: " + cities.map((c) => c.city));
-            })
-              }}
-              value={search}
-              containerStyle={Styles.searchBar}
-              inputContainerStyle={Styles.inputContainer}
-              inputStyle={Styles.inputText}
-            />
-            <FlatList
-              data={myFilteredCities}
-              renderItem={({ item, index }) => (
-                <City
-                  {...item}
-                  navigation={navigation}
-                  onDelete={onDelete}
-                  key={index}
-                  apiKey={apiKey}
-                />
-              )}
-              keyExtractor={(item) => item.city}
-            />
-          </>
-        )}
+        {renderView()}
         <TouchableOpacity
           style={Styles.button}
           onPress={() => navigation.navigate("AddCity")}
@@ -158,4 +215,8 @@ const Styles = StyleSheet.create({
     inputText:{
         color:"black"
     },
+    text:{
+      fontSize:20,
+
+    }
 })

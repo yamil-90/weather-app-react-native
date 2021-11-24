@@ -23,7 +23,7 @@ export default function City(item) {
                 return response.json();
             })
             .then((json) => setdata(json))
-            .catch((error) => console.error(error))
+            .catch((error) => console.log(error))
             .finally(() => setLoading(false));
     }, [])
 
@@ -46,7 +46,7 @@ export default function City(item) {
                             transform: [{ translateX: trans }],
                         },
                     ]}>
-                    Delete
+                    Borrar
                 </Animated.Text>
             </TouchableOpacity>
         );

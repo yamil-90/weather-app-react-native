@@ -56,13 +56,13 @@ export default function Navigation(){
                 headerShown: false
               }}
             />
-            <Tab.Screen 
+            {/* <Tab.Screen 
             name="Ventana de pruebas" 
             component={TestGrounds}
             options={{
                 headerShown: true
               }}
-            />
+            /> */}
             </Tab.Navigator>
         </NavigationContainer>
     )

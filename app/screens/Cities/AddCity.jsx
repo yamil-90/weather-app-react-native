@@ -44,6 +44,8 @@ export default function AddCity({ navigation }) {
             reload;
         };
     }, [navigation]);
+
+    //aca gusrdo la data si la request fue exitosa
     const saveData = async (values) => {
         console.log(values)
         try {
@@ -68,7 +70,7 @@ export default function AddCity({ navigation }) {
                 const jsonValue = JSON.stringify(myCities);
                 // console.log(jsonValue)
                 await AsyncStorage.setItem('myCities', jsonValue);
-                setNewMarker({ latitude: values.coord.lon, longitude: values.coord.lat })
+                setNewMarker({ latitude: values.coord.lat, longitude: values.coord.lon, longitudeDelta: 0.015, latitudeDelta: 0.015  })
                 getData()
                 // navigation.navigate('Cities')
             }
