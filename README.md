@@ -33,7 +33,7 @@ yarn install
    ```
    yarn start
    ```
-3. Abrir el Android Studio o Expo Go en el celular
+3. Abrir el software Android Studio o Expo Go en el celular
 4. ???
 5. Profit.
 
