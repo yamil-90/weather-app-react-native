@@ -4,10 +4,13 @@ Fuentes de datos: **API Weather**
 Persistencia de datos: **SQLite (Android) o Core Data (iOS)**  
 Versionamiento de código: **Git y GitHub**  
 
+# User Persona
+* [Persona](https://github.com/yamil-90/weather-app-react-native/blob/main/resources/User_Persona_Paula.pdf)
+
 
 # Para correr este proyecto en tu PC necesitarás:
 
-* Tener Node JS [versión 16.13.0](https://[Link text Here](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
+* Tener Node JS [versión 16.13.0](https://[nodejs](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
 
 * Instalar yarn
   ```
