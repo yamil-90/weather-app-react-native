@@ -16,7 +16,7 @@ export default function Navigation(){
         <NavigationContainer>
           <StatusBar
         animated={true}
-        backgroundColor={'#b3ecff'}
+        backgroundColor={'#87CEEB'}
       />
             <Tab.Navigator
               initialRouteName="Home"

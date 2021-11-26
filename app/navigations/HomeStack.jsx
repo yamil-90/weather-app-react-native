@@ -13,7 +13,7 @@ export default function HomeStack() {
         containerCustomStyle={{flexGrow:0}}
           name="Principal"
           component={Home}
-          options={{title: "Pagina principal"}}
+          options={{title: "Página principal"}}
         />
       </Stack.Navigator>
     );
