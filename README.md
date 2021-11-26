@@ -4,10 +4,18 @@ Fuentes de datos: **API Weather**
 Persistencia de datos: **SQLite**  
 Versionamiento de código: **Git y GitHub**  
 
+# User Persona
+* [Persona](https://github.com/yamil-90/weather-app-react-native/blob/main/resources/User_Persona_Paula.pdf)
+
 
 # Dependencias que deberás instalar
 
+
 * Instalar Expo CLI
+
+* Tener Node JS [versión 16.13.0](https://[nodejs](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
+
+* Instalar yarn
   ```
   $ npm install --global expo-cli/
   ```
