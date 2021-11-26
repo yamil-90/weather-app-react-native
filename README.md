@@ -1,48 +1,48 @@
 # Aplicación de clima Mobile, basada en React Native
 Lenguaje de programación y Toolkit: **React Native**  
 Fuentes de datos: **API Weather**  
-Persistencia de datos: **SQLite (Android) o Core Data (iOS)**  
+Persistencia de datos: **SQLite**  
 Versionamiento de código: **Git y GitHub**  
 
 # User Persona
 * [Persona](https://github.com/yamil-90/weather-app-react-native/blob/main/resources/User_Persona_Paula.pdf)
 
 
-# Para correr este proyecto en tu PC necesitarás:
+# Dependencias que deberás instalar
+
+
+* Instalar Expo CLI
 
 * Tener Node JS [versión 16.13.0](https://[nodejs](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
 
 * Instalar yarn
   ```
-  $ npm install --global yarn
+  $ npm install --global expo-cli/
   ```
-
-* Instalar expo-cli
+* Instalar la librería `Location`
   ```
-  $ yarn global add expo-cli
+  $ expo install expo-location
   ```
-
-* Una vez que tengas instaladas las dependencias anteriores, deberás clonar el repo:
+* Tener una API key de OpenWeatherMaps
+* Instalar la librería `react-native-env`
   ```
-  $ git clone git@github.com:yamil-90/weather-app-react-native.git
+  npm install react-native-dotenv
   ```
-
-* Asegurate de estar en la rama `main`:
-  ```
-  $ git branch
-  ```
-
-  - Si no estuvieras en ella, deberás correr
-  ```
-  $ git checkout main
-  ```
-
-* Finalmente deberás instalar todas las librerías:
-  ```
-  $ yarn install
-  ```
-
-Adicionalmente deberás tener una API key de OpenWeatherMaps para guardar en la variable de entorno. Para agregarla a tu proyecto, deberás crear un archivo `.env` en el directorio root del proyecto, y llenarlo así:
+NOTA: es posible instalar todos los paquetes con
 ```
-WEATHER_API = "<tu API key de openweather>"
+yarn install
 ```
+
+* Instalar `Expo Go` en tu celular, o `Android Studio` en tu PC. Recordá que Android Studio tiende a ser bastante pesado para la PC.
+
+# Correr el proyecto en tu PC:
+1. Tener instaladas todas las dependencias del apartado anterior.
+2. Correr el comando
+   ```
+   yarn start
+   ```
+3. Abrir el software Android Studio o Expo Go en el celular
+4. ???
+5. Profit.
+
+NOTA: las funciones de ubicación y mapa pueden no correr adecuadamente en el emulador Android Studio. Probablemente se deba a un tema de configuración de ese software.
