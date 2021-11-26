@@ -5,8 +5,21 @@ Persistencia de datos: **SQLite**
 Versionamiento de código: **Git y GitHub**  
 
 # User Persona
-* [Persona](https://github.com/yamil-90/weather-app-react-native/blob/main/resources/User_Persona_Paula.pdf)
 
+<p align="center">
+    <a href="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/User_Persona_Paula.pdf"><img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/Paula.png" height="350"/><br> Click aquí para ver el documento completo </a>
+</p>
+
+# Prototipo de la app
+<p align="center">
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/01_home.png" height="350"/> &nbsp;&nbsp;
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/02_cities_A.png" height="350"/> &nbsp;&nbsp;
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/02_cities_B.png" height="350"/> &nbsp;&nbsp;
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/02_cities_C.png" height="350"/> &nbsp;&nbsp;
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/02_cities_D.png" height="350"/> &nbsp;&nbsp;
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/03_about_A.png" height="350"/> &nbsp;&nbsp;
+    <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/03_about_B.png" height="350"/>
+</p>
 
 # Dependencias que deberás instalar
 
