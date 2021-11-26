@@ -13,11 +13,13 @@ Versionamiento de código: **Git y GitHub**
 
 * Instalar Expo CLI
 
-* Tener Node JS [versión 16.13.0](https://[nodejs](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
+  $ npm install --global expo-cli/
+  ```
+* Tener Node JS [versión 16.13.0][nodejs](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
 
 * Instalar yarn
   ```
-  $ npm install --global expo-cli/
+  npm install --global yarn
   ```
 * Instalar la librería `Location`
   ```
