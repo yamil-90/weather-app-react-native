@@ -62,6 +62,7 @@ export default function AddCity({ navigation }) {
                     await AsyncStorage.setItem('myCities', jsonValue);
                     setNewMarker({ latitude: values.coord.lat, longitude: values.coord.lon, longitudeDelta: 0.015, latitudeDelta: 0.015 })
                     markers.push(newMarker);
+                    setLoading(true)
                     getData();
                     Alert.alert(
                         'Ciudad agregada!'
@@ -77,6 +78,9 @@ export default function AddCity({ navigation }) {
                 await AsyncStorage.setItem('myCities', jsonValue);
                 setNewMarker({ latitude: values.coord.lat, longitude: values.coord.lon, longitudeDelta: 0.015, latitudeDelta: 0.015  })
                 getData()
+                markers.push(newMarker);
+
+                setError('')
                 // navigation.navigate('Cities')
             }
         } catch (error) {

@@ -28,7 +28,13 @@
         "LOCATION",
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION"
-      ]
+      ],
+      "package": "com.weatherapp",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBvJUhWev8kizrtR6jstzZwT8ELb0fgQmQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
