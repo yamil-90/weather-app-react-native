@@ -22,15 +22,15 @@ Versionamiento de código: **Git y GitHub**
 </p>
 
 # Link para el apk (en caso de que quieras bajarlo directo a un dispositivo android)
-  [link para descargar la apk](https://expo.dev/artifacts/7888fdbe-91df-4f36-9f5c-b6430f68acff)
+  [Link para descargar la apk](https://expo.dev/artifacts/7888fdbe-91df-4f36-9f5c-b6430f68acff)
 
-  * abrir el link desde el dispositivo con tu explorador de eleccion y esperar que se complete la descarga
+  * Abrir el link desde el dispositivo con tu explorador de elección y esperar que se complete la descarga.
 
-  * abrir la apk (puede que tengas que habilitar el uso de app externas)
+  * Abrir la apk (puede que tengas que [habilitar el uso de aplicaciones desconocidas](https://elpoderdelandroideverde.com/como-instalar-aplicaciones-desconocidas-en-android/))
 
-  * si salta un mensaje de advertencia elegir "instalar de todos modos"
+  * Si salta un mensaje de advertencia elegir "instalar de todos modos".
 
-  * abrir la app en tu dispositivo movil
+  * Abrir la app en tu dispositivo movil; estará instalada con el nombre `weather-app-react-native`.
 
 # Dependencias que deberás instalar
 
@@ -39,25 +39,19 @@ Versionamiento de código: **Git y GitHub**
   ```
   $ npm install --global expo-cli/
 * Tener Node JS [versión 16.13.0] [nodejs](https://nodejs.org/) 
- NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
+ Realizar la instalación con `nvm` suele tener los mejores resultados.
 
 * Instalar yarn
   ```
   $ npm install --global yarn
   ```
-* Instalar la librería `Location`
+* Instalar todas las librerías
   ```
-  $ expo install expo-location
+  $ yarn install
   ```
 * Tener una API key de OpenWeatherMaps (en el repo esta la nuestra ya guardada,)
-* Instalar la librería `react-native-env`
-  ```
-  npm install react-native-dotenv
-  ```
-NOTA: es posible instalar todos los paquetes con
-```
-yarn install
-```
+
+
 
 * Instalar `Expo Go` en tu celular, o `Android Studio` en tu PC. Recordá que Android Studio tiende a ser bastante pesado para la PC.
 
@@ -65,7 +59,11 @@ yarn install
 1. Tener instaladas todas las dependencias del apartado anterior.
 2. Correr el comando
    ```
-   yarn start o expo start
+   $ yarn start
+   ```
+   O bien
+   ```
+   $ expo start
    ```
 3. Abrir el software Android Studio o Expo Go en el celular
 4. ???
