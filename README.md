@@ -12,20 +12,20 @@ Versionamiento de código: **Git y GitHub**
 
 
 * Instalar Expo CLI
-
-  $ npm install --global expo-cli/
   ```
-* Tener Node JS [versión 16.13.0][nodejs](https://nodejs.org/). NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
+  $ npm install --global expo-cli/
+* Tener Node JS [versión 16.13.0] [nodejs](https://nodejs.org/) 
+ NOTA: realizar la instalación con `nvm` suele tener los mejores resultados.
 
 * Instalar yarn
   ```
-  npm install --global yarn
+  $ npm install --global yarn
   ```
 * Instalar la librería `Location`
   ```
   $ expo install expo-location
   ```
-* Tener una API key de OpenWeatherMaps
+* Tener una API key de OpenWeatherMaps (en el repo esta la nuestra ya guardada,)
 * Instalar la librería `react-native-env`
   ```
   npm install react-native-dotenv
