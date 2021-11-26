@@ -5,11 +5,11 @@ Persistencia de datos: **SQLite**
 Versionamiento de código: **Git y GitHub**  
 
 
-# Para correr este proyecto en tu PC necesitarás:
+# Dependencias que deberás instalar
 
 * Instalar Expo CLI
   ```
-  $ npm install --global expo-cli
+  $ npm install --global expo-cli/
   ```
 * Instalar la librería `Location`
   ```
@@ -20,7 +20,21 @@ Versionamiento de código: **Git y GitHub**
   ```
   npm install react-native-dotenv
   ```
+NOTA: es posible instalar todos los paquetes con
+```
+yarn install
+```
+
 * Instalar `Expo Go` en tu celular, o `Android Studio` en tu PC. Recordá que Android Studio tiende a ser bastante pesado para la PC.
 
+# Correr el proyecto en tu PC:
+1. Tener instaladas todas las dependencias del apartado anterior.
+2. Correr el comando
+   ```
+   yarn start
+   ```
+3. Abrir el software Android Studio o Expo Go en el celular
+4. ???
+5. Profit.
 
 NOTA: las funciones de ubicación y mapa pueden no correr adecuadamente en el emulador Android Studio. Probablemente se deba a un tema de configuración de ese software.
