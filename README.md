@@ -21,6 +21,17 @@ Versionamiento de código: **Git y GitHub**
     <img src="https://github.com/yamil-90/weather-app-react-native/blob/main/resources/png/03_about_B.png" height="350"/>
 </p>
 
+# Link para el apk (en caso de que quieras bajarlo directo a un dispositivo android)
+  [link para descargar la apk](https://expo.dev/artifacts/7888fdbe-91df-4f36-9f5c-b6430f68acff)
+
+  * abrir el link desde el dispositivo con tu explorador de eleccion y esperar que se complete la descarga
+
+  * abrir la apk (puede que tengas que habilitar el uso de app externas)
+
+  * si salta un mensaje de advertencia elegir "instalar de todos modos"
+
+  * abrir la app en tu dispositivo movil
+
 # Dependencias que deberás instalar
 
 
@@ -54,7 +65,7 @@ yarn install
 1. Tener instaladas todas las dependencias del apartado anterior.
 2. Correr el comando
    ```
-   yarn start
+   yarn start o expo start
    ```
 3. Abrir el software Android Studio o Expo Go en el celular
 4. ???
