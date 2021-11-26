@@ -114,54 +114,6 @@ export default function Cities({ navigation }) {
           />
         </>)
       }
-      // {loading ? (
-      //   <Text>Cargando</Text>
-      // ) : error || !myCities ? (
-      //   <Text>Error al cargar los datos {error}</Text>
-      // ) : (
-      //   <>
-      //     <SearchBar
-      //       placeholder="Ciudad"
-      //       render={function(){
-      //           console.log("hola");
-      //       }}
-      //       onChangeText={function (e) {
-      //         setSearch(e);
-      //         const value = AsyncStorage.getItem('myCities').then((value) => {
-      //         const allCities = JSON.parse(value);
-      //         var cities = allCities.filter((c) =>
-      //           c.city
-      //             .trim()
-      //             .toUpperCase()
-      //             .includes(e.trim().toUpperCase())
-      //         );
-      //         if (e.trim() == "") {
-      //           cities = allCities;
-      //         }
-      //         setMyFilteredCities(cities);
-      //         console.log("cities: " + cities.map((c) => c.city));
-      //     })
-      //       }}
-      //       value={search}
-      //       containerStyle={Styles.searchBar}
-      //       inputContainerStyle={Styles.inputContainer}
-      //       inputStyle={Styles.inputText}
-      //     />
-      //     <FlatList
-      //       data={myFilteredCities}
-      //       renderItem={({ item, index }) => (
-      //         <City
-      //           {...item}
-      //           navigation={navigation}
-      //           onDelete={onDelete}
-      //           key={index}
-      //           apiKey={apiKey}
-      //         />
-      //       )}
-      //       keyExtractor={(item) => item.city}
-      //     />
-      //   </>
-      // )}
     }
 
     const apiKey= process.env.WEATHER_API

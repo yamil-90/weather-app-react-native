@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import MapWithMarkers from '../../components/MapWithMarkers';
+import { Alert } from 'react-native';
 
 
 
@@ -62,7 +63,11 @@ export default function AddCity({ navigation }) {
                     setNewMarker({ latitude: values.coord.lat, longitude: values.coord.lon, longitudeDelta: 0.015, latitudeDelta: 0.015 })
                     markers.push(newMarker);
                     getData();
-                    console.log(markers);
+                    Alert.alert(
+                        'Ciudad agregada!'
+                    )
+                    setError('')
+                    //console.log(markers);
                     //navigation.navigate('Cities')
                 }
             } else {
@@ -90,7 +95,7 @@ export default function AddCity({ navigation }) {
                 else return response.json()
                 
             })
-            .catch((error) => console.error(error))
+            .catch((error) => console.log(error))
             .then((json) => {
                 console.log(json)
                 if(json){

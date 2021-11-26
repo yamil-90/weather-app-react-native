@@ -15,14 +15,17 @@ export default function Home() {
     return (
         <LinearGradient colors={['#87CEEB', '#b5d1ff']} style={Styles.main_view}>
             <Text>
-                ubicacion actual
+                Ubicacion actual
             </Text>
             <NearWeather/>
             <View style={Styles.slider_box}>
             <SliderBox  
             resizeMode={'contain'}
             sliderBoxHeight={350}
-             images={images} />
+             images={images} 
+             autoplay={true}
+             circleLoop={true}
+             />
             </View>
         </LinearGradient>
     )
